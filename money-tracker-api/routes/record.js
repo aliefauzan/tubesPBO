@@ -89,49 +89,47 @@ router.get("/searchrecords", (req, res) => {
 })
 
 router.post("/insertrecord", multer.single('attachment'), imgUpload.uploadToGcs, (req, res) => {
-    const name = req.body.name
-    const amount = req.body.amount
-    const date = req.body.date
-    const notes = req.body.notes
-    var imageUrl = ''
+    const name = req.body.name;
+    const amount = req.body.amount;
+    const date = req.body.date;
+    const notes = req.body.notes;
 
-    if (req.file && req.file.cloudStoragePublicUrl) {
-        imageUrl = req.file.cloudStoragePublicUrl
-    }
+    const query = "INSERT INTO records (name, amount, date, notes, is_masuk, is_keluar) values (?, ?, ?, ?, ?, ?)";
 
-    const query = "INSERT INTO records (name, amount, date, notes, attachment) values (?, ?, ?, ?, ?)"
+    // Tentukan nilai is_masuk dan is_keluar berdasarkan input transaksi
+    const is_masuk = req.body.transaksi === 'masuk' ? 1 : 0;
+    const is_keluar = req.body.transaksi === 'keluar' ? 1 : 0;
 
-    connection.query(query, [name, amount, date, notes, imageUrl], (err, rows, fields) => {
+    connection.query(query, [name, amount, date, notes, is_masuk, is_keluar], (err, rows, fields) => {
         if (err) {
-            res.status(500).send({message: err.sqlMessage})
+            res.status(500).send({message: err.sqlMessage});
         } else {
-            res.send({message: "Insert Successful"})
+            res.send({message: "Insert Successful"});
         }
-    })
-})
+    });
+});
 
 router.put("/editrecord/:id", multer.single('attachment'), imgUpload.uploadToGcs, (req, res) => {
-    const id = req.params.id
-    const name = req.body.name
-    const amount = req.body.amount
-    const date = req.body.date
-    const notes = req.body.notes
-    var imageUrl = ''
+    const id = req.params.id;
+    const name = req.body.name;
+    const amount = req.body.amount;
+    const date = req.body.date;
+    const notes = req.body.notes;
 
-    if (req.file && req.file.cloudStoragePublicUrl) {
-        imageUrl = req.file.cloudStoragePublicUrl
-    }
+    const query = "UPDATE records SET name = ?, amount = ?, date = ?, notes = ?, is_masuk = ?, is_keluar = ? WHERE id = ?";
 
-    const query = "UPDATE records SET name = ?, amount = ?, date = ?, notes = ?, attachment = ? WHERE id = ?"
-    
-    connection.query(query, [name, amount, date, notes, imageUrl, id], (err, rows, fields) => {
+    // Tentukan nilai is_masuk dan is_keluar berdasarkan input transaksi
+    const is_masuk = req.body.transaksi === 'masuk' ? 1 : 0;
+    const is_keluar = req.body.transaksi === 'keluar' ? 1 : 0;
+
+    connection.query(query, [name, amount, date, notes, is_masuk, is_keluar, id], (err, rows, fields) => {
         if (err) {
-            res.status(500).send({message: err.sqlMessage})
+            res.status(500).send({message: err.sqlMessage});
         } else {
-            res.send({message: "Update Successful"})
+            res.send({message: "Update Successful"});
         }
-    })
-})
+    });
+});
 
 router.delete("/deleterecord/:id", (req, res) => {
     const id = req.params.id

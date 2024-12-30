@@ -4,5 +4,6 @@ CREATE TABLE records (
     amount DOUBLE NOT NULL,
     date DATETIME NOT NULL,
     notes TEXT,
-    attachment VARCHAR(255)
+    is_masuk TINYINT(1) NOT NULL DEFAULT 0, -- 1 untuk Masuk, 0 untuk tidak
+    is_keluar TINYINT(1) NOT NULL DEFAULT 0 -- 1 untuk Keluar, 0 untuk tidak
 );
