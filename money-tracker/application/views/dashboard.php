@@ -43,7 +43,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img src="<?php echo base_url(); ?>assets/images/icon/logo.png" alt="CoolAdmin" />
+                            <img src="<?php echo base_url(); ?>assets/images/icon/logo.jpg" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -75,7 +75,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="<?php echo base_url(); ?>assets/images/icon/logo.png" alt="Cool Admin" />
+                    <img src="<?php echo base_url(); ?>assets/images/icon/logo.jpg" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -173,39 +173,27 @@
                                                 <th>Barang</th>
                                                 <th>Jumlah</th>
                                                 <th>Tanggal</th>
+                                                <th>Status Barang</th>
                                                 <th>Catatan</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php foreach($records as $record) { ?>
-                                            <tr>
-                                                <td><?php echo $record['name']; ?></td>
-                                                <td><?php echo $record['amount']; ?></td>
-                                                <td><?php echo $record['date']; ?></td>
-                                                <td><?php echo $record['notes']; ?></td>
-                                            </tr>
+                                                <tr>
+                                                    <td><?php echo $record['name']; ?></td>
+                                                    <td><?php echo $record['amount']; ?></td>
+                                                    <td><?php echo $record['date']; ?></td>
+                                                    <td>
+                                                        <?php 
+                                                        echo $record['is_masuk'] ? 'Masuk' : '';
+                                                        echo $record['is_keluar'] ? 'Keluar' : '';
+                                                        ?>
+                                                    </td>
+                                                    <td><?php echo $record['notes']; ?></td>
+                                                </tr>
                                             <?php } ?>
                                         </tbody>
                                     </table>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <h2 class="title-1 m-b-25">Top Expense</h2>
-                                <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
-                                    <div class="au-card-inner">
-                                        <div class="table-responsive">
-                                            <table class="table table-top-countries">
-                                                <tbody>
-                                                    <?php foreach($incomes as $income) { ?>
-                                                    <tr>
-                                                        <td><?php echo $income["name"]; ?></td>
-                                                        <td class="text-right">Rp <?php echo $income["amount"]; ?></td>
-                                                    </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
