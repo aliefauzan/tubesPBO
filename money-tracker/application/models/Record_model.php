@@ -50,12 +50,17 @@ class Record_model extends CI_Model {
     public function insertRecord() {
         $type = $this->input->post('recordtype');
         $amount = $this->input->post('amount');
-
+    
+        // Mengubah jumlah jika tipe adalah pengeluaran
         if ($type == "expense") {
             $amount = $amount * -1;
         }
-
-
+    
+        // Menentukan status transaksi
+        $transaksi = $this->input->post('transaksi');
+        $is_masuk = ($transaksi == 'masuk') ? 1 : 0;
+        $is_keluar = ($transaksi == 'keluar') ? 1 : 0;
+    
         $response = $this->client->request('POST', '/insertrecord', [
             'multipart' => [
                 [
@@ -73,23 +78,36 @@ class Record_model extends CI_Model {
                 [
                     'name' => 'notes',
                     'contents' => $this->input->post('notes')
+                ],
+                [
+                    'name' => 'is_masuk',
+                    'contents' => $this->input->post('is_masuk')
+                ],
+                [
+                    'name' => 'is_keluar',
+                    'contents' => $this->input->post('is_keluar')
                 ]
             ]
         ]);
         $result = json_decode($response->getBody()->getContents(), true);
-
+    
         return $result;
     }
-
+    
     public function updateRecord($id) {
         $type = $this->input->post('recordtype');
         $amount = $this->input->post('amount');
-
+    
+        // Mengubah jumlah jika tipe adalah pengeluaran
         if ($type == "expense") {
             $amount = $amount * -1;
         }
-
-
+    
+        // Menentukan status transaksi
+        $transaksi = $this->input->post('transaksi');
+        $is_masuk = ($transaksi == 'masuk') ? 1 : 0;
+        $is_keluar = ($transaksi == 'keluar') ? 1 : 0;
+    
         $response = $this->client->request('PUT', '/editrecord/'.$id, [
             'multipart' => [
                 [
@@ -107,11 +125,19 @@ class Record_model extends CI_Model {
                 [
                     'name' => 'notes',
                     'contents' => $this->input->post('notes')
+                ],
+                [
+                    'name' => 'is_masuk',
+                    'contents' => $is_masuk
+                ],
+                [
+                    'name' => 'is_keluar',
+                    'contents' => $is_keluar
                 ]
             ]
         ]);
         $result = json_decode($response->getBody()->getContents(), true);
-
+    
         return $result;
     }
 
