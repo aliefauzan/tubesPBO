@@ -43,7 +43,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img src="<?php echo base_url(); ?>assets/images/icon/logo.png" alt="CoolAdmin" />
+                            <img src="<?php echo base_url(); ?>assets/images/icon/logo.jpg" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -75,11 +75,11 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="<?php echo base_url(); ?>assets/images/icon/logo.png" alt="Cool Admin" />
+                    <img src="<?php echo base_url(); ?>assets/images/icon/logo.jpg" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
-                <nav class="navbar-sidebar">
+                <nav class=" navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li>
                             <a href="/"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
@@ -121,7 +121,7 @@
                     <div class="container-fluid">
                         <div class="row"> 
                             <div class="col-lg-12">
-                                <h2 class="title-1 m-b-25">My Transactions</h2>
+                                <h2 class="title-1 m-b-25">Barang Keluar/Masuk</h2>
                                 <div class="table-responsive table--no-card m-b-40">
                                     <table class="table table-borderless table-striped table-earning">
                                         <thead>
@@ -129,6 +129,7 @@
                                                 <th>Barang</th>
                                                 <th>Jumlah</th>
                                                 <th>Tanggal</th>
+                                                <th>Status Barang</th>
                                                 <th>Catatan</th>
                                                 <th>Edit</th>
                                                 <th>Hapus</th>
@@ -140,6 +141,19 @@
                                                 <td><?php echo $record['name']; ?></td>
                                                 <td><?php echo $record['amount']; ?></td>
                                                 <td><?php echo $record['date']; ?></td>
+                                                <td>
+                                                    <?php 
+                                                    // Menampilkan status Masuk dan Keluar
+                                                    $status = [];
+                                                    if ($record['is_masuk']) {
+                                                        $status[] = 'Masuk';
+                                                    }
+                                                    if ($record['is_keluar']) {
+                                                        $status[] = 'Keluar';
+                                                    }
+                                                    echo implode(', ', $status);
+                                                    ?>
+                                                </td>
                                                 <td><?php echo $record['notes']; ?></td>
                                                 <td><a href="records/edit/<?php echo $record['id']; ?>"><i class="fa fa-edit"></i></a></td>
                                                 <td><a href="records/delete/<?php echo $record['id']; ?>"><i class="fa fa-trash"></i></a></td>
@@ -164,20 +178,16 @@
     <script src="<?php echo base_url(); ?>assets/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
     <!-- Vendor JS       -->
-    <script src="<?php echo base_url(); ?>assets/vendor/slick/slick.min.js">
-    </script>
+    <script src="<?php echo base_url(); ?>assets/vendor/slick/slick.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/wow/wow.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/animsition/animsition.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
+    <script src="<?php echo base_url(); ?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="<?php echo base_url(); ?>assets/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendor/counter-up/jquery.counterup.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendor/circle-progress/circle-progress .min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/vendor/select2/select2.min.js">
-    </script>
+    <script src="<?php echo base_url(); ?>assets/vendor/select2/select2.min.js"></script>
 
     <!-- Main JS-->
     <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
@@ -185,4 +195,4 @@
 </body>
 
 </html>
-<!-- end document-->
+<!-- end document -->
