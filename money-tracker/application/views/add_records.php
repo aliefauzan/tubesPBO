@@ -43,7 +43,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img src="<?php echo base_url(); ?>assets/images/icon/logo.png" alt="CoolAdmin" />
+                            <img src="<?php echo base_url(); ?>assets/images/icon/logo.jpg" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -75,7 +75,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="<?php echo base_url(); ?>assets/images/icon/logo.png" alt="Cool Admin" />
+                    <img src="<?php echo base_url(); ?>assets/images/icon/logo.jpg" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -139,6 +139,20 @@
                                                 <div class="form-group">
                                                     <label for="date" class=" form-control-label">Date*</label>
                                                     <input type="datetime-local" id="date" name="date" class="form-control">
+                                                </div>
+                                                    <div class="form-group">
+                                                    <label class="form-control-label">Status Barang*</label>
+                                                    <div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="masuk" name="transaksi" value="masuk" class="form-check-input">
+                                                            <label for="masuk" class="form-check-label">Masuk</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="keluar" name="transaksi" value="keluar" class="form-check-input">
+                                                            <label for="keluar" class="form-check-label">Keluar</label>
+                                                        </div>
+                                                    </div>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="notes" class=" form-control-label">Notes</label>
