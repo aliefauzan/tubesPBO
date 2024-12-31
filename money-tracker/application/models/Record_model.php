@@ -90,15 +90,7 @@ class Record_model extends CI_Model {
         return $result;
     }
         
-    public function updateRecord($id) {
-        $type = $this->input->post('recordtype');
-        $amount = $this->input->post('amount');
-    
-        // Mengubah jumlah jika tipe adalah pengeluaran
-        if ($type == "expense") {
-            $amount = $amount * -1;
-        }
-    
+    public function updateRecord($id, $data) {
         // Menentukan status transaksi
         $transaksi = $this->input->post('transaksi');
         $is_masuk = ($transaksi == 'masuk') ? 1 : 0;
@@ -108,19 +100,19 @@ class Record_model extends CI_Model {
             'multipart' => [
                 [
                     'name' => 'amount',
-                    'contents' => $amount
+                    'contents' => $data['amount']
                 ],
                 [
                     'name' => 'name',
-                    'contents' => $this->input->post('name')
+                    'contents' => $data['name']
                 ],
                 [
                     'name' => 'date',
-                    'contents' => $this->input->post('date')
+                    'contents' => $data['date']
                 ],
                 [
                     'name' => 'notes',
-                    'contents' => $this->input->post('notes')
+                    'contents' => $data['notes']
                 ],
                 [
                     'name' => 'is_masuk',
@@ -129,9 +121,13 @@ class Record_model extends CI_Model {
                 [
                     'name' => 'is_keluar',
                     'contents' => $is_keluar
+                ],
+                [
+                    'name' => 'transaksi',  // Menambahkan transaksi ke dalam request
+                    'contents' => $transaksi
                 ]
             ]
-        ]);
+        ]);        
         $result = json_decode($response->getBody()->getContents(), true);
     
         return $result;
