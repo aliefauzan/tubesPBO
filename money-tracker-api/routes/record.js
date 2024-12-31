@@ -94,6 +94,9 @@ router.post("/insertrecord", multer.single('attachment'), imgUpload.uploadToGcs,
     const date = req.body.date;
     const notes = req.body.notes;
 
+    const transaksi = req.body.transaksi;
+    console.log("req body: ", req.body);
+    console.log("Transaksi received: ", transaksi || "No transaksi data");
     const query = "INSERT INTO records (name, amount, date, notes, is_masuk, is_keluar) values (?, ?, ?, ?, ?, ?)";
 
     // Tentukan nilai is_masuk dan is_keluar berdasarkan input transaksi
