@@ -80,6 +80,28 @@ img {
 p {
     margin: 0;
 }
+.row {
+    margin: 0; /* Hilangkan margin untuk memastikan tabel memenuhi container */
+}
+
+.col-12 {
+    padding: 0; /* Hilangkan padding untuk lebar penuh */
+}
+
+.table-responsive {
+    overflow-x: auto; /* Tambahkan jika tabel panjang */
+}
+
+.table {
+    width: 100%; /* Pastikan tabel mengambil lebar penuh */
+    margin: 0; /* Hilangkan margin */
+    border-collapse: collapse; /* Gabungkan border tabel */
+}
+
+.table th, .table td {
+    padding: 10px; /* Jaga jarak antar sel */
+    text-align: left; /* Posisi teks */
+}
 
 .table-responsive {
     padding-right: 1px;
