@@ -47,45 +47,41 @@ class Record_model extends CI_Model {
         return $result[0];
     }
 
-    public function insertRecord() {
-        $type = $this->input->post('recordtype');
-        $amount = $this->input->post('amount');
-    
-        // Mengubah jumlah jika tipe adalah pengeluaran
-        if ($type == "expense") {
-            $amount = $amount * -1;
-        }
-    
+    public function insertRecord($data) {
         // Menentukan status transaksi
         $transaksi = $this->input->post('transaksi');
         $is_masuk = ($transaksi == 'masuk') ? 1 : 0;
         $is_keluar = ($transaksi == 'keluar') ? 1 : 0;
-    
+
         $response = $this->client->request('POST', '/insertrecord', [
             'multipart' => [
                 [
                     'name' => 'amount',
-                    'contents' => $amount
+                    'contents' => $data['amount']
                 ],
                 [
                     'name' => 'name',
-                    'contents' => $this->input->post('name')
+                    'contents' => $data['name']
                 ],
                 [
                     'name' => 'date',
-                    'contents' => $this->input->post('date')
+                    'contents' => $data['date']
                 ],
                 [
                     'name' => 'notes',
-                    'contents' => $this->input->post('notes')
+                    'contents' => $data['notes']
                 ],
                 [
                     'name' => 'is_masuk',
-                    'contents' => $this->input->post('is_masuk')
+                    'contents' => $is_masuk
                 ],
                 [
                     'name' => 'is_keluar',
-                    'contents' => $this->input->post('is_keluar')
+                    'contents' => $is_keluar
+                ],
+                [
+                    'name' => 'transaksi',  // Menambahkan transaksi ke dalam request
+                    'contents' => $transaksi
                 ]
             ]
         ]);
@@ -93,7 +89,7 @@ class Record_model extends CI_Model {
     
         return $result;
     }
-    
+        
     public function updateRecord($id) {
         $type = $this->input->post('recordtype');
         $amount = $this->input->post('amount');

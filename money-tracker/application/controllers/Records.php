@@ -25,7 +25,6 @@ class Records extends CI_Controller {
         $this->form_validation->set_rules('transaksi', 'Transaksi', 'required', [
             'required' => 'Anda harus memilih jenis transaksi (Masuk atau Keluar).'
         ]);
-
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('add_records');
         } else {
@@ -54,7 +53,7 @@ class Records extends CI_Controller {
         // Tentukan nilai is_masuk dan is_keluar berdasarkan input transaksi
         $data['is_masuk'] = ($data['transaksi'] == 'masuk') ? 1 : 0;
         $data['is_keluar'] = ($data['transaksi'] == 'keluar') ? 1 : 0;
-
+        
         // Panggil model untuk menyimpan data
         $this->record_model->insertRecord($data);
         redirect('records');
