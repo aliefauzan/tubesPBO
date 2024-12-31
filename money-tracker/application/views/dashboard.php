@@ -14,21 +14,26 @@
 
     <!-- Fontfaces CSS-->
     <link href="<?php echo base_url(); ?>assets/css/font-face.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet"
+        media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet"
+        media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/mdi-font/css/material-design-iconic-font.min.css"
+        rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
     <link href="<?php echo base_url(); ?>assets/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
     <link href="<?php echo base_url(); ?>assets/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
+        rel="stylesheet" media="all">
     <link href="<?php echo base_url(); ?>assets/vendor/wow/animate.css" rel="stylesheet" media="all">
     <link href="<?php echo base_url(); ?>assets/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="<?php echo base_url(); ?>assets/vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="<?php echo base_url(); ?>assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet"
+        media="all">
 
     <!-- Main CSS-->
     <link href="<?php echo base_url(); ?>assets/css/theme.css" rel="stylesheet" media="all">
@@ -104,12 +109,13 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input au-input--xl" type="text" name="search"
+                                    placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -164,7 +170,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-9">
+                            <div class="col-lg-12">
                                 <h2 class="title-1 m-b-25">Last 10 records</h2>
                                 <div class="table-responsive table--no-card m-b-40">
                                     <table class="table table-borderless table-striped table-earning">
@@ -179,18 +185,18 @@
                                         </thead>
                                         <tbody>
                                             <?php foreach($records as $record) { ?>
-                                                <tr>
-                                                    <td><?php echo $record['name']; ?></td>
-                                                    <td><?php echo $record['amount']; ?></td>
-                                                    <td><?php echo $record['date']; ?></td>
-                                                    <td>
-                                                        <?php 
+                                            <tr>
+                                                <td><?php echo $record['name']; ?></td>
+                                                <td><?php echo $record['amount']; ?></td>
+                                                <td><?php echo $record['date']; ?></td>
+                                                <td>
+                                                    <?php 
                                                         echo $record['is_masuk'] ? 'Masuk' : '';
                                                         echo $record['is_keluar'] ? 'Keluar' : '';
                                                         ?>
-                                                    </td>
-                                                    <td><?php echo $record['notes']; ?></td>
-                                                </tr>
+                                                </td>
+                                                <td><?php echo $record['notes']; ?></td>
+                                            </tr>
                                             <?php } ?>
                                         </tbody>
                                     </table>
@@ -200,7 +206,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                    <p>Tubes PBO</p>
                                 </div>
                             </div>
                         </div>

@@ -14,21 +14,26 @@
 
     <!-- Fontfaces CSS-->
     <link href="<?php echo base_url(); ?>assets/css/font-face.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet"
+        media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet"
+        media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/mdi-font/css/material-design-iconic-font.min.css"
+        rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
     <link href="<?php echo base_url(); ?>assets/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
     <link href="<?php echo base_url(); ?>assets/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
+        rel="stylesheet" media="all">
     <link href="<?php echo base_url(); ?>assets/vendor/wow/animate.css" rel="stylesheet" media="all">
     <link href="<?php echo base_url(); ?>assets/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="<?php echo base_url(); ?>assets/vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="<?php echo base_url(); ?>assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet"
+        media="all">
 
     <!-- Main CSS-->
     <link href="<?php echo base_url(); ?>assets/css/theme.css" rel="stylesheet" media="all">
@@ -102,7 +107,7 @@
             <header class="header-desktop">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        
+
                     </div>
                 </div>
             </header>
@@ -112,7 +117,7 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <div class="row"> 
+                        <div class="row">
                             <div class="col-lg-12">
                                 <h2 class="title-1 m-b-25">Kelola Barang</h2>
                                 <div class="col-lg-12">
@@ -122,61 +127,70 @@
                                         </div>
                                         <div class="card-body card-block">
                                             <?php if (validation_errors()) : ?>
-                                                <div class="alert alert-danger">
-                                                    <?php echo validation_errors(); ?>
-                                                </div>
+                                            <div class="alert alert-danger">
+                                                <?php echo validation_errors(); ?>
+                                            </div>
                                             <?php endif; ?>
                                             <?php echo form_open('../records/add', 'enctype="multipart/form-data" class="form-horizontal"'); ?>
-                                            
-                                                <div class="form-group">
-                                                    <label for="cc-payment" class="control-label mb-1">Amount*</label>
-                                                    <input id="cc-pament" name="amount" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="10000">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="name" class=" form-control-label">Name*</label>
-                                                    <input type="text" id="name" name="name" placeholder="Name" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="date" class=" form-control-label">Date*</label>
-                                                    <input type="datetime-local" id="date" name="date" class="form-control">
-                                                </div>
-                                                    <div class="form-group">
-                                                    <label class="form-control-label">Status Barang*</label>
-                                                    <div>
-                                                        <div class="form-check">
-                                                            <input type="radio" id="masuk" name="transaksi" value="masuk" class="form-check-input">
-                                                            <label for="masuk" class="form-check-label">Masuk</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input type="radio" id="keluar" name="transaksi" value="keluar" class="form-check-input">
-                                                            <label for="keluar" class="form-check-label">Keluar</label>
-                                                        </div>
+
+                                            <div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Amount*</label>
+                                                <input id="cc-pament" name="amount" type="text" class="form-control"
+                                                    aria-required="true" aria-invalid="false" placeholder="10000">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name" class=" form-control-label">Name*</label>
+                                                <input type="text" id="name" name="name" placeholder="Name"
+                                                    class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="date" class=" form-control-label">Date*</label>
+                                                <input type="datetime-local" id="date" name="date" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-control-label">Status Barang*</label>
+                                                <div>
+                                                    <div class="form-check">
+                                                        <input type="radio" id="masuk" name="transaksi" value="masuk"
+                                                            class="form-check-input">
+                                                        <label for="masuk" class="form-check-label">Masuk</label>
                                                     </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" id="keluar" name="transaksi" value="keluar"
+                                                            class="form-check-input">
+                                                        <label for="keluar" class="form-check-label">Keluar</label>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="notes" class=" form-control-label">Notes</label>
-                                                    <textarea name="notes" id="notes" rows="9" placeholder="Notes..." class="form-control"></textarea>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <button type="submit" class="btn btn-primary btn-sm">
-                                                        <i class="fa fa-dot-circle-o"></i> Submit
-                                                    </button>
-                                                    <button type="reset" class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-ban"></i> Reset
-                                                    </button>
-                                                </div>
-                                            </form>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="notes" class=" form-control-label">Notes</label>
+                                                <textarea name="notes" id="notes" rows="9" placeholder="Notes..."
+                                                    class="form-control"></textarea>
+                                            </div>
                                         </div>
+
+
+
+
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-dot-circle-o"></i> Submit
+                                            </button>
+                                            <button type="reset" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-ban"></i> Reset
+                                            </button>
+                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
-            </div>
+        </div>
 
     </div>
 

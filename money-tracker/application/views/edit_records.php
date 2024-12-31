@@ -14,21 +14,26 @@
 
     <!-- Fontfaces CSS-->
     <link href="<?php echo base_url(); ?>assets/css/font-face.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet"
+        media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet"
+        media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/mdi-font/css/material-design-iconic-font.min.css"
+        rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
     <link href="<?php echo base_url(); ?>assets/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
     <link href="<?php echo base_url(); ?>assets/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
+        rel="stylesheet" media="all">
     <link href="<?php echo base_url(); ?>assets/vendor/wow/animate.css" rel="stylesheet" media="all">
     <link href="<?php echo base_url(); ?>assets/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="<?php echo base_url(); ?>assets/vendor/slick/slick.css" rel="stylesheet" media="all">
     <link href="<?php echo base_url(); ?>assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="<?php echo base_url(); ?>assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="<?php echo base_url(); ?>assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet"
+        media="all">
 
     <!-- Main CSS-->
     <link href="<?php echo base_url(); ?>assets/css/theme.css" rel="stylesheet" media="all">
@@ -88,7 +93,7 @@
                             <a href="../../records"><i class="fas fa-chart-bar"></i>Records</a>
                         </li>
                         <li class="active">
-                            <a href="../../records/add"><i class="fas fa-plus-square"></i>Add Records</a>
+                            <a href="../../records/add"><i class="fas fa-plus-square"></i>Edit Records</a>
                         </li>
                     </ul>
                 </nav>
@@ -103,7 +108,7 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -114,9 +119,9 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <div class="row"> 
+                        <div class="row">
                             <div class="col-lg-12">
-                                <h2 class="title-1 m-b-25">Money Tracker</h2>
+                                <h2 class="title-1 m-b-25">Kelola Barang</h2>
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-header">
@@ -124,65 +129,73 @@
                                         </div>
                                         <div class="card-body card-block">
                                             <?php if (validation_errors()) : ?>
-                                                <div class="alert alert-danger">
-                                                    <?php echo validation_errors(); ?>
-                                                </div>
+                                            <div class="alert alert-danger">
+                                                <?php echo validation_errors(); ?>
+                                            </div>
                                             <?php endif; ?>
                                             <?php echo form_open("../../records/editrecord/" . $record['id'], 'enctype="multipart/form-data" class="form-horizontal"'); ?>
-                                                <div class="form-group">
-                                                    <label for="cc-payment" class="control-label mb-1">Amount*</label>
-                                                    <input id="cc-pament" name="amount" type="text" class="form-control" aria-required="true" aria-invalid="false" placeholder="10000" value="<?php echo $record['amount'] ?>">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="name" class=" form-control-label">Name*</label>
-                                                    <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<?php echo $record['name']; ?>">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="date" class=" form-control-label">Date*</label>
-                                                    <input type="datetime-local" id="date" name="date" class="form-control" value="<?php echo date('Y-m-d\TH:i:s', strtotime('2019-06-10T16:00:00.000Z')); ?>">
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-2">
-                                                        <label class=" form-control-label">Type*</label>
+                                            <div class="form-group">
+                                                <label for="name">Name*</label>
+                                                <input type="text" id="name" name="name" class="form-control"
+                                                    value="<?php echo $record['name']; ?>" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="amount">Amount*</label>
+                                                <input type="text" id="amount" name="amount" class="form-control"
+                                                    value="<?php echo $record['amount']; ?>" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="date">Date*</label>
+                                                <input type="datetime-local" id="date" name="date" class="form-control"
+                                                    value="<?php echo date('Y-m-d\TH:i', strtotime($record['date'])); ?>"
+                                                    required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Status Barang*</label>
+                                                <div>
+                                                    <div class="form-check">
+                                                        <input type="radio" id="masuk" name="transaksi" value="masuk"
+                                                            class="form-check-input"
+                                                            <?php echo $record['is_masuk'] ? 'checked' : ''; ?>>
+                                                        <label for="masuk" class="form-check-label">Masuk</label>
                                                     </div>
-                                                    <div class="col col-md-10">
-                                                        <div class="form-check">
-                                                            <div class="radio">
-                                                                <label for="income" class="form-check-label ">
-                                                                    <input type="radio" id="income" name="recordtype" value="income" class="form-check-input" <?php if ($record['amount'] >= 0) echo "checked"; ?>>Income
-                                                                </label>
-                                                            </div>
-                                                            <div class="radio">
-                                                                <label for="expense" class="form-check-label ">
-                                                                    <input type="radio" id="expense" name="recordtype" value="expense" class="form-check-input" <?php if ($record['amount'] < 0) echo "checked"; ?>>Expense
-                                                                </label>
-                                                            </div>
-                                                        </div>
+                                                    <div class="form-check">
+                                                        <input type="radio" id="keluar" name="transaksi" value="keluar"
+                                                            class="form-check-input"
+                                                            <?php echo $record['is_keluar'] ? 'checked' : ''; ?>>
+                                                        <label for="keluar" class="form-check-label">Keluar</label>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="notes" class=" form-control-label">Notes</label>
-                                                    <textarea name="notes" id="notes" rows="9" placeholder="Notes..." class="form-control"><?php echo $record['notes']; ?></textarea>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <button type="submit" class="btn btn-primary btn-sm">
-                                                        <i class="fa fa-dot-circle-o"></i> Submit
-                                                    </button>
-                                                    <button type="reset" class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-ban"></i> Reset
-                                                    </button>
-                                                </div>
-                                            </form>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="notes" class=" form-control-label">Notes</label>
+                                                <textarea name="notes" id="notes" rows="9" placeholder="Notes..."
+                                                    class="form-control"><?php echo $record['notes']; ?></textarea>
+                                            </div>
+
                                         </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-dot-circle-o"></i> Submit
+                                            </button>
+                                            <button type="reset" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-ban"></i> Reset
+                                            </button>
+                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
-            </div>
+        </div>
 
     </div>
 
