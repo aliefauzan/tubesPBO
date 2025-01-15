@@ -46,6 +46,6 @@
             out.println("<script>alert('Barang berhasil diambil!'); window.location = 'view.jsp';</script>");
         } else {
             out.println("<script>alert('Stok tidak cukup!'); window.location = 'ambil.jsp';</script>");
-        }
-    }
+        }
+    }
 %>

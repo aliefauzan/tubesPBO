@@ -50,6 +50,18 @@
         .btn-login:hover {
             background-color: #1976D2;
         }
+        .error-message {
+            color: red;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .success-message {
+            color: #2ecc71;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -81,28 +93,42 @@
                         String confirmPassword = request.getParameter("confirm-password");
 
                         if (!password.equals(confirmPassword)) {
-                            out.println("<p style='color:red; text-align:center;'>Password dan konfirmasi password tidak sesuai.</p>");
+                            out.println("<p class='error-message'>Password dan konfirmasi password tidak sesuai.</p>");
                         } else {
                             Connection conn = null;
-                            PreparedStatement stmt = null;
+                            PreparedStatement checkStmt = null;
+                            PreparedStatement insertStmt = null;
 
                             try {
                                 conn = JDBC.getConnection();
-                                String query = "INSERT INTO users (username, password) VALUES (?, ?)";
-                                stmt = conn.prepareStatement(query);
-                                stmt.setString(1, username);
-                                stmt.setString(2, password); // Untuk keamanan, hash password sebelum menyimpan.
+                                
+                                // Cek apakah username sudah digunakan
+                                String checkQuery = "SELECT * FROM users WHERE username = ?";
+                                checkStmt = conn.prepareStatement(checkQuery);
+                                checkStmt.setString(1, username);
+                                ResultSet rs = checkStmt.executeQuery();
 
-                                int rowsInserted = stmt.executeUpdate();
-                                if (rowsInserted > 0) {
-                                    out.println("<p style='color:green; text-align:center;'>Registrasi berhasil! Silakan <a href='index.jsp'>login</a>.</p>");
+                                if (rs.next()) {
+                                    out.println("<p class='error-message'>Username telah terpakai. Silakan gunakan username lain.</p>");
                                 } else {
-                                    out.println("<p style='color:red; text-align:center;'>Registrasi gagal. Silakan coba lagi.</p>");
+                                    // Tambahkan pengguna baru
+                                    String insertQuery = "INSERT INTO users (username, password) VALUES (?, ?)";
+                                    insertStmt = conn.prepareStatement(insertQuery);
+                                    insertStmt.setString(1, username);
+                                    insertStmt.setString(2, password); // Untuk keamanan, hash password sebelum menyimpan.
+
+                                    int rowsInserted = insertStmt.executeUpdate();
+                                    if (rowsInserted > 0) {
+                                        out.println("<p class='success-message'>Registrasi berhasil! Silakan <a href='index.jsp'>login</a>.</p>");
+                                    } else {
+                                        out.println("<p class='error-message'>Registrasi gagal. Silakan coba lagi.</p>");
+                                    }
                                 }
                             } catch (Exception e) {
-                                out.println("<p style='color:red; text-align:center;'>Error: " + e.getMessage() + "</p>");
+                                out.println("<p class='error-message'>Error: " + e.getMessage() + "</p>");
                             } finally {
-                                if (stmt != null) stmt.close();
+                                if (checkStmt != null) checkStmt.close();
+                                if (insertStmt != null) insertStmt.close();
                                 if (conn != null) conn.close();
                             }
                         }

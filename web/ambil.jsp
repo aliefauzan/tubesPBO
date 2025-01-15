@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
+            font-family: "Poppins", sans-serif;
             background-color: #f7f7f7;
             margin: 0;
             display: flex;
@@ -34,7 +35,7 @@
             transition: background-color 0.3s ease;
         }
         .fixed-menu a:hover {
-            background-color: #4CAF50;
+            background-color: #1976D2;
         }
 
         /* Center Content */
@@ -51,18 +52,18 @@
             margin: 20px;
         }
         .card-header {
-            background-color: #4CAF50;
+            background-color: #343a40;
             color: white;
             font-weight: bold;
             text-align: center;
             padding: 20px;
         }
         .btn-attach {
-            background-color: #4CAF50;
+            background-color: #343a40;
             border: none;
         }
         .btn-attach:hover {
-            background-color: #45a049;
+            background-color: #1976D2;
         }
     </style>
 </head>
@@ -73,6 +74,7 @@
         <div class="logo-container text-center mb-4">
             <img src="https://i.ibb.co.com/9TCjSps/singgung.jpg" alt="Logo" class="img-fluid" style="max-width: 80%; border-radius: 5px;">
         </div>
+        <a href="menu.jsp">Dashboard</a>
         <a href="view.jsp">Lihat Barang</a>
         <a href="add.jsp">Tambah Barang</a>
         <a href="ambil.jsp">Ambil Barang</a>

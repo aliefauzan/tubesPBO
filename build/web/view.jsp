@@ -10,6 +10,7 @@
     <style>
         body {
             background-color: #f7f7f7;
+            font-family: "Poppins", sans-serif;
         }
         .fixed-menu {
             position: fixed;
@@ -30,23 +31,49 @@
             transition: background-color 0.3s ease;
         }
         .fixed-menu a:hover {
-            background-color: #4CAF50;
+            background-color: #1976D2;
         }
         .content {
             margin-left: 240px;
         }
-        .table th, .table td {
-            text-align: center;
-        }
-        .table {
+        table {
             margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: none;
+        }
+        table th, table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        table th {
+            background-color: #343a40;
+            color: white;
+        }
+        table thead tr th:first-child {
+            border-top-left-radius: 10px;
+        }
+        table thead tr th:last-child {
+            border-top-right-radius: 10px;
+        }
+        table tbody tr td:first-child {
+            border-bottom-left-radius: 10px;
+        }
+        table tbody tr td:last-child {
+            border-bottom-right-radius: 10px;
+        }
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .table-wrapper {
+            overflow-x: auto;
         }
         .btn-custom {
-            background-color: #4CAF50;
+            background-color: #2196F3;
             color: white;
         }
         .btn-custom:hover {
-            background-color: #45a049;
+            background-color: #1976D2;
         }
     </style>
 </head>
@@ -56,6 +83,7 @@
         <div class="logo-container text-center mb-4">
             <img src="https://i.ibb.co.com/9TCjSps/singgung.jpg" alt="Logo" class="img-fluid" style="max-width: 80%; border-radius: 5px;">
         </div>
+        <a href="menu.jsp">Dashboard</a>
         <a href="view.jsp">Lihat Barang</a>
         <a href="add.jsp">Tambah Barang</a>
         <a href="ambil.jsp">Ambil Barang</a>
@@ -70,7 +98,7 @@
                 <a href="add.jsp" class="btn btn-custom">Tambah Barang</a>
             </div>
             <table class="table table-bordered table-striped">
-                <thead>
+                <thead class="table-dark">
                     <tr>
                         <th>Nama Barang</th>
                         <th>Stok</th>

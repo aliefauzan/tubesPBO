@@ -3,6 +3,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="JDBC.JDBC" %>
 <%
+    String errorMessage = null;
     if (request.getMethod().equalsIgnoreCase("POST")) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -18,7 +19,7 @@
             session.setAttribute("username", username);
             response.sendRedirect("menu.jsp");
         } else {
-            out.println("<p style='color:red;'>Login gagal. Username atau password salah.</p>");
+            errorMessage = "Login gagal. Username atau password salah.";
         }
     }
 %>
@@ -32,6 +33,7 @@
     <style>
         body {
             background-color: #f7f7f7;
+            font-family: "Poppins", sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -71,6 +73,12 @@
         .btn-register:hover {
             background-color: #1976D2;
         }
+        .error-message {
+            color: red;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -98,12 +106,10 @@
                         <a href="#" class="text-decoration-none">Forgot password?</a>
                     </div>
                     <button type="submit" class="btn btn-login w-100 text-white mb-3">Login</button>
+                    <% if (errorMessage != null) { %>
+                    <p class="error-message text-center"><%= errorMessage %></p>
+                    <% } %>
                 </form>
-                <% if (request.getParameter("error") != null) { %>
-                <div class="alert alert-danger mt-3 text-center">
-                    Username atau password salah!
-                </div>
-                <% } %>
                 <div class="text-center">
                     <p>Belum punya akun? <a href="registrasi.jsp" class="btn btn-register text-white">Daftar Akun</a></p>
                 </div>
